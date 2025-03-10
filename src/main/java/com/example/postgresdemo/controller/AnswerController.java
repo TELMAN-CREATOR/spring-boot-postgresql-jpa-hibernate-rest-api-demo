@@ -20,12 +20,12 @@ public class AnswerController {
     private QuestionRepository questionRepository;
 
     @GetMapping("/questions/{questionId}/answers")
-    public List<Answer> getAnswersByQuestionId(@PathVariable Long questionId) {
+    public List<Answer> getAnswersByQuestionId(@PathVariable(value = "questionId") Long questionId) {
         return answerRepository.findByQuestionId(questionId);
     }
 
     @PostMapping("/questions/{questionId}/answers")
-    public Answer addAnswer(@PathVariable Long questionId,
+    public Answer addAnswer(@PathVariable(value = "questionId") Long questionId,
                             @Valid @RequestBody Answer answer) {
         return questionRepository.findById(questionId)
                 .map(question -> {

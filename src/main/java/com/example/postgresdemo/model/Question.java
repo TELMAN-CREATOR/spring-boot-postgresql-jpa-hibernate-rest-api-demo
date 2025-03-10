@@ -4,8 +4,17 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 @Entity
 @Table(name = "questions")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Question extends AuditModel {
     @Id
     @GeneratedValue(generator = "question_generator")
@@ -23,27 +32,4 @@ public class Question extends AuditModel {
     @Column(columnDefinition = "text")
     private String description;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 }
